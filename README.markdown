@@ -58,7 +58,7 @@
 
 ### 정렬
 
-It's fun to see how sorting algorithms work, but in practice you'll almost never have to provide your own sorting routines. Swift's own `sort()` is more than up to the job. But if you're curious, read on...
+알고리즘이 어떻게 작동하는지 보는 것은 재미있지만, 실제로 자신만의 정렬 루틴을 제공할 일이 거의 없습니다. 스위프트의 `sort()`를 사용하는것이 더 적합합니다. 하지만 흥미있다면 읽어보세요…
 
 기초 정렬:
 
