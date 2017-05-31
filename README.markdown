@@ -152,27 +152,27 @@
 - [힙](Heap/). 배열에 저장된 이진 트리이므로 포인터를 사용하지 않음. 큰 우선 순위 대기열을 만든다.
 - [트라이](Trie/). 연관 자료구조를 저장하기 위해 사용되는 특별한 트리
 - [B-트리](B-Tree/). 자가 균형 이진 탐색 트리로써, 각 노드가 2개 이상의 하위 노드를 가질 수 있음
-### Hashing
+### 해쉬 알고리즘
 
-- [Hash Table](Hash%20Table/). Allows you to store and retrieve objects by a key. This is how the dictionary type is usually implemented.
-- Hash Functions
+- [해쉬 테이블](Hash%20Table/). 키를 이용하여 값을 저장하거나 회수할 수 있게 해줍니다. Dictionary가 어떤식으로 작동하는지 보여줍니다.
+- 해쉬 함수
 
-### Sets
+### 집합
 
-- [Bloom Filter](Bloom%20Filter/). A constant-memory data structure that probabilistically tests whether an element is in a set.
-- [Hash Set](Hash%20Set/). A set implemented using a hash table.
-- Multiset
-- [Ordered Set](Ordered%20Set/). A set where the order of items matters.
+- [Bloom Filter](Bloom%20Filter/). 값이 집합에 포함되는지를 확률적으로 테스트하는 상수 메모리 자료구조.
+- [해쉬 집합](Hash%20Set/). 해쉬 테이블을 사용하여 수행되는 집합.
+- 멀티셋
+- [정렬 집합](Ordered%20Set/). 순서가 중요한 집합
 
-### Graphs
+### 그래프
 
-- [Graph](Graph/)
-- [Breadth-First Search (BFS)](Breadth-First%20Search/)
-- [Depth-First Search (DFS)](Depth-First%20Search/)
-- [Shortest Path](Shortest%20Path%20%28Unweighted%29/) on an unweighted tree
-- [Single-Source Shortest Paths](Single-Source%20Shortest%20Paths%20(Weighted)/)
-- [Minimum Spanning Tree](Minimum%20Spanning%20Tree%20%28Unweighted%29/) on an unweighted tree
-- [All-Pairs Shortest Paths](All-Pairs%20Shortest%20Paths/)
+- [그래프](Graph/)
+- [너비 우선 탐색(BFS)](Breadth-First%20Search/)
+- [깊이 우선 탐색 (DFS)](Depth-First%20Search/)
+- [최단 경로](Shortest%20Path%20%28Unweighted%29/) on an unweighted tree
+- [싱글 소스 최단 경로](Single-Source%20Shortest%20Paths%20(Weighted)/)
+- [최소 신장 트리](Minimum%20Spanning%20Tree%20%28Unweighted%29/) on an unweighted tree
+- [모든쌍 최단경로](All-Pairs%20Shortest%20Paths/)
 
 ## Puzzles
 
