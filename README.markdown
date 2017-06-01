@@ -30,7 +30,7 @@
 - [스텍](Stack/)
 - [큐](Queue/)
 - [삽입 정렬](Insertion%20Sort/)
-- [이진 탐색](Binary%20Search/) and [이진 탐색 트리](Binary%20Search%20Tree/)
+- [이진 탐색](Binary%20Search/) / [이진 탐색 트리](Binary%20Search%20Tree/)
 - [병합 정렬](Merge%20Sort/)
 - [Boyer-Moore 문자열 탐색](Boyer-Moore/)
 
@@ -47,7 +47,7 @@
 - [Union-Find](Union-Find/). 분리된 집합을 찾고 쉽게 병합하도록 도와주는 작업
 
 
-### String Search
+### 문자열 탐색
 
 [무차별 문자열 탐색](Brute-Force%20String%20Search/). 무식한 방법
 - [Boyer-Moore](Boyer-Moore/). 문자열 추출을 위한 빠른 탐색 방법. 순람표를 기초로 하여 텍스트로부터 모든 문자를 체크하는 것을 피하기 위해 사용
@@ -59,6 +59,7 @@
 ### 정렬
 
 알고리즘이 어떻게 작동하는지 보는 것은 재미있지만, 실제로 자신만의 정렬 루틴을 제공할 일이 거의 없습니다. 스위프트의 `sort()`를 사용하는것이 더 적합합니다. 하지만 흥미있다면 읽어보세요…
+
 
 기초 정렬:
 
@@ -152,6 +153,7 @@
 - [힙](Heap/). 배열에 저장된 이진 트리이므로 포인터를 사용하지 않음. 큰 우선 순위 대기열을 만든다.
 - [트라이](Trie/). 연관 자료구조를 저장하기 위해 사용되는 특별한 트리
 - [B-트리](B-Tree/). 자가 균형 이진 탐색 트리로써, 각 노드가 2개 이상의 하위 노드를 가질 수 있음
+
 ### 해쉬 알고리즘
 
 - [해쉬 테이블](Hash%20Table/). 키를 이용하여 값을 저장하거나 회수할 수 있게 해줍니다. Dictionary가 어떤식으로 작동하는지 보여줍니다.
@@ -174,19 +176,19 @@
 - [최소 신장 트리](Minimum%20Spanning%20Tree%20%28Unweighted%29/) on an unweighted tree
 - [모든쌍 최단경로](All-Pairs%20Shortest%20Paths/)
 
-## Puzzles
+## 퍼즐
 
-A lot of software developer interview questions consist of algorithmic puzzles. Here is a small selection of fun ones. For more puzzles (with answers), see [here](http://elementsofprogramminginterviews.com/) and [here](http://www.crackingthecodinginterview.com).
+대부분의 개발자 인터뷰 질문들은 알고리즘 퍼즐로 되어 있습니다. 여기 재미있는 퍼즐들이 있습니다. (답변과 함께 보려면), 여길 보세요 [링크](http://elementsofprogramminginterviews.com/) / [링크](http://www.crackingthecodinginterview.com).
 
 - [Two-Sum Problem](Two-Sum%20Problem/)
 - [Fizz Buzz](Fizz%20Buzz/)
-- [Monty Hall Problem](Monty%20Hall%20Problem/)
-- [Finding Palindromes](Palindromes/)
-- [Dining Philosophers](DiningPhilosophers/)
+- [몬티 홀 문제](Monty%20Hall%20Problem/)
+- [Finding Palindromes](Palindromes/) 어느쪽으로 읽어도 똑같은 숫자를 찾는 알고리즘
+- [식사하는 철학자](DiningPhilosophers/) 
 
-## Learn more!
+## 더 배우기!
 
-For more information, check out these great books:
+더 많은 정보를 원하시면 다음의 책을 확인해보세요:
 
 - [Introduction to Algorithms](https://mitpress.mit.edu/books/introduction-algorithms) by Cormen, Leiserson, Rivest, Stein
 - [The Algorithm Design Manual](http://www.algorist.com) by Skiena
@@ -194,7 +196,7 @@ For more information, check out these great books:
 - [Algorithms](http://www.cs.princeton.edu/~rs/) by Sedgewick
 - [Grokking Algorithms](https://www.manning.com/books/grokking-algorithms) by Aditya Bhargava 
 
-The following books are available for free online:
+다음 책들은 온라인에서 무료로 볼 수 있습니다.:
 
 - [Algorithms](http://www.beust.com/algorithms.pdf) by Dasgupta, Papadimitriou, Vazirani
 - [Algorithms, Etc.](http://jeffe.cs.illinois.edu/teaching/algorithms/) by Erickson
@@ -203,7 +205,7 @@ The following books are available for free online:
 - [Open Data Structures](http://opendatastructures.org) by Pat Morin
 - [Wikibooks: Algorithms and Implementations](https://en.wikibooks.org/wiki/Algorithm_Implementation)
 
-Other algorithm repositories:
+다른 알고리즘 저장소:
 
 - [EKAlgorithms](https://github.com/EvgenyKarkan/EKAlgorithms). A great collection of algorithms in Objective-C.
 - [@lorentey](https://github.com/lorentey/). Production-quality Swift implementations of common algorithms and data structures.
@@ -211,13 +213,13 @@ Other algorithm repositories:
 - [AlgorithmVisualizer](http://jasonpark.me/AlgorithmVisualizer/). Visualize algorithms on your browser.
 - [Swift Structures](https://github.com/waynewbishop/SwiftStructures) Data Structures with directions on how to use them [here](http://waynewbishop.com/swift)
 
-## Credits
+## 크레딧
 
-The Swift Algorithm Club was originally created by [Matthijs Hollemans](https://github.com/hollance).
+Swift Algorithm Club은 [Matthijs Hollemans](https://github.com/hollance)에 의해 만들어졌습니다.
 
-It is now maintained by [Vincent Ngo](https://www.raywenderlich.com/u/jomoka), [Kelvin Lau](https://github.com/kelvinlauKL) and [Ross O'brien](https://www.raywenderlich.com/u/narrativium).
+현재 [Vincent Ngo](https://www.raywenderlich.com/u/jomoka), [Kelvin Lau](https://github.com/kelvinlauKL) 그리고 [Ross O'brien](https://www.raywenderlich.com/u/narrativium).에 의해 지속적으로 운영되고 있습니다.
 
-The Swift Algorithm Club is a collaborative effort from the [most algorithmic members](https://github.com/rwenderlich/swift-algorithm-club/graphs/contributors) of the [raywenderlich.com](https://www.raywenderlich.com) community. We're always looking for help - why not [join the club](How%20to%20Contribute.markdown)? :]
+Swift Algorithm Club 은 [raywenderlich.com](https://www.raywenderlich.com) 커뮤니티의 [most algorithmic members](https://github.com/rwenderlich/swift-algorithm-club/graphs/contributors)의 협력과 노력의 결과물입니다.  우리는 항상 도와주실 분을 찾고 있습니다. - why not [join the club](How%20to%20Contribute.markdown)? :]
 
 ## License
 
