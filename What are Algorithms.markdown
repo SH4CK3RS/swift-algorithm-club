@@ -1,18 +1,18 @@
-# What are algorithms and data structures?
+# 알고리즘과 자료구조가 무엇인가요?
 
-An algorithm is a recipe for making the computer do something. If you know how to cook, you understand algorithms!
+알고리즘은 컴퓨터가 무언가를 할 수 있도록 만드는 레시피입니다. 어떻게 요리할지 안다면, 알고리즘을 알고있는것입니다!
 
-Here's a [recipe for pancakes](http://allrecipes.com/recipe/21014/good-old-fashioned-pancakes/):
+[팬케익 레시피](http://allrecipes.com/recipe/21014/good-old-fashioned-pancakes/):
 
-1. In a large bowl, sift together flour, baking powder, salt and sugar.
-2. Pour in the milk, egg, and melted butter.
-3. Mix until smooth.
-4. Heat a frying pan over medium heat.
-5. Scoop the batter into the pan, using approximately 1/4 cup for each pancake.
-6. Brown the pancake on both sides.
+1. 큰 그릇에 밀가루, 베이킹 파우더, 소금 및 설탕을 함께 섞습니다.
+2. 우유, 달걀 그리고 녹인 버터를 부어주세요
+3. 부드러워질 때까지 잘 섞어주세요
+4. 프라이팬을 중불로 달궈주세요
+5. 팬케익당 약 1/4컵 정도의 양을 팬에 덜어주세요
+6. 양쪽이 갈색 빛을 띄도록 구워주세요
 
-The recipe consists of a series of steps that you perform one after the other. An algorithm is just like that, except that it contains instructions for a computer to perform, not for a cook.
+레시피는 일련의 단계로 구성되어있고 하나씩 수행합니다. 알고리즘도 요리를 하는것이 아닐 뿐 컴퓨터가 할 일에 대한 지시가 있다는 것을 보면 같습니다.
 
-The ingredients -- flour, milk, eggs, butter -- are the data that the algorithm works on. The data goes into the algorithm in one form (raw, separate ingredients) and comes out in another (delicious pancakes!).
+-- 밀가루, 우유, 달걀, 버터 —와 같은 재료들은 을고리즘이 작동하기위해 필요한 데이터입니다. 재료들은 (요리되지 않은 분리된 재료)의 형태로 알고리즘에 전달되어 또 다른(맛있는 팬케익!)으로 나오게됩니다.
 
-So what are the data structures? They are the containers that hold the data while the algorithm works on it. In the pancake recipe, the data structures are the bag that holds the flour, the mixing bowl where you combine everything, the frying pan that browns the pancake, and finally the plate used to serve the finished pancake.
+그럼 자료구조는 무엇인가요? 알고리즘이 작동할때 데이터를 가지고 있는 틀과 같습니다. 팬 케익 레시피에서 자료구조는 밀가루를 담고있는 팩, 재료를 섞는 큰 그릇, 팬케익을 굽는 프라이팬, 그리고 완성된 팬케익을 담는 접시라고 볼 수 있습니다.
