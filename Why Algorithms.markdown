@@ -1,37 +1,34 @@
-# Why learn algorithms and data structures?
+# 왜 알고리즘과 자료구조를 배우나요?
 
-If you've been coding for while you may wonder what the point is of learning about algorithms and data structures, especially if you don't have a formal computer science or engineering background.
+코딩을 해본 적이 있다면 알고리즘과 데이터 구조에 대해 배우는 것이 무엇인지 궁금해 할 것입니다. 특히 공식적인 컴퓨터 과학이나 공학적 배경이없는 경우에는 더욱 그렇습니다.
+결국 앱을 만들때 얼마나 자주 링크드 리스트나 자신만의 정렬된 루틴을 사용해야 할지 묻는다면, 그 대답은 거의 없다. 입니다.
 
-After all, how often do you actually have to use a linked list or write your own sort routine when you're making apps? The answer is: almost never.
+#### **하지만...**
+해매한 문제를 하결하기 위해 사용되는 알고리즘에 사용되는 전략에 대해 조금이라도 아는것은 자신의 코드를 개선할 수 있는 아이디어를 제공합니다.
 
-#### **However...**
+표준 배열 또는 딕셔너리 보다 더 많은 자료구조를 아는 것이 자신만의 앱을 만들 때에 있어서 더 많은 도구모음(collection of tools)을얻을 수 있습니다.
 
-Knowing a little bit about the strategies used by algorithms to solve tricky problems gives you ideas for improvements you can make to your own code.
+이것들은 당신을 더 좋은 개발자로 만들어 줄 것입니다.! (And better developers make more $$$.)
 
-Knowing more data structures than just the standard array and dictionary gives you a bigger collection of tools you can use to build your own apps.
+#### 알고리즘은 자신이 빌드할 수 없었던 소프트웨어를 빌드할 수 있게 해줍니다.
+저는 과거에 기초적인 문제에 막혀 만들수 없었던 앱들이 있습니다.
 
-It will make you a better developer! (And better developers make more $$$.)
+속도에서의 문제: 저는 프로그램을 추분히 빠르게 만들 수 없었습니다. 지금와서 다시 생각해보니 이 문제에서 저는 잘못된 알고리즘을 선택했던 것입니다. 만약 제가 **O(n)** and **O(n^2)**에 대한 차이를 알고 있었더라면 저는 좀더 운이 있었을 것입니다.
 
-#### Algorithms lets you build software you couldn't otherwise build
+무식한 브루트포스 솔루션은 적은양의 데이터에는 잘 작동하지만 때때로 많은 양의 데이터를 다룰때는 제대로 작동하지 않습니다. 그러면 더 똑똑한 알고리즘이 필요합니다.
 
-There have been apps that I've been unable to create in the past because I got stuck on fundamental issues.
+프로그래밍 문제를 전혀 해결하지 못하던 시기도 있었습니다. 단순히 어디서 시작해야할지도 몰랐습니다. 조금의 알고리즘 이론을 이해하는 것이 시도할수 있는 다양한 방법을 얻게 해줍니다.
 
-Often it was a matter of speed: I just couldn't make the program go fast enough. Thinking back on this now, I had chosen the wrong algorithms for these problems. If I had known more about the difference between **O(n)** and **O(n^2)**, then maybe I would have had better luck.
+#### 알고리즘을 기억하는 것에 시간을 낭비하지 마세요
 
-Naive brute-force solutions work fine for small amounts of data, but sometimes you need to deal with lots of data. And then you need smarter algorithms.
+알고리즘을 기억하려고 하는 대신에 어떻게 다른 알고리즘이 다른 문제들에 대해 어떻게 접근하는지를 이해하려고 노력하세요
 
-There were also times I wasn't able to solve my programming problems at all, not even slowly. I simply didn't know where to begin. Understanding a bit of algorithm theory gives you various tactics you can try.
+— divide-and-conquer, dynamic programming, greedy algorithms —와 같은 기술에 대해서 배우고, 어떤게 접근을 느리게 또는 빠르게 하는지를 보고 어떤식으로 타협할지 배워보세요.
 
-#### Don't spend any time memorizing algorithms
+핵심은 어떻게 컴퓨터를 작동하게 할지에 대한 통찰력을 기르는 데에 있습니다.
 
-That's not the point. Instead, try to understand how different algorithms approach different problems.
+#### 생각보다 무섭지 않습니다.
 
-Learn about techniques such as divide-and-conquer, dynamic programming, greedy algorithms. See what makes one approach slow and another fast, and learn what the tradeoffs are.
+많은 알고리즘 교과서는 많은 수학으로 시작합니다. 진실은, 수학은 유용하지만 대부분의 시간에 그것을 필요로하지 않을 것입니다. 거기에 겁먹지 모세요. 코드를 작성할 수 있다면 이러한 모든 멋진 알고리즘과 데이터 구조를 이해할 수 있습니다.
 
-The key thing here is to get insight in how we can make computers do things.
-
-#### It's not as scary as it sounds
-
-A lot of algorithm textbooks start with a bunch of math. Truth is, the math is useful but most of the time you won't need it. So don't let that scare you. If you can write code, you can also understand all these fancy algorithms and data structures.
-
-Trust me, algorithms are fun. :-)
+저를 믿으세요. 알고리즘은 재밌습니다! :-)
