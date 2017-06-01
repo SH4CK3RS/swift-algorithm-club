@@ -1,13 +1,13 @@
-# A note on Big-O notation
+# Big-O 표기법
+알고리즘이 얼마나 빠르고 얼마나 많은 공간을 차지하는지 아는것은 어떤 작업을 할 때 적절한 알고리즘을 고를 수 있게 해줄 수 있어 매우 유용합니다.
 
-It's useful to know how fast an algorithm is and how much space it needs. This allows you to pick the right algorithm for the job.
+Big-O표기법은 알고리즘의 실행시간 그리고 사용되는 메모리의 양을대략적으로 알 수 있게 해줍니다. 누군가가 “이 알고리즘은 **O(n^2)**라는 최악의 실행시간을 가지며 **O(n)**만크의 공간을 사용한다” 라고 한다면 이 알고리즘은 느리지만 많은양의 부가 메모리가 필요하지 않다는 것을 의미합니다
 
-Big-O notation gives you a rough indication of the running time of an algorithm and the amount of memory it uses. When someone says, "This algorithm has worst-case running time of **O(n^2)** and uses **O(n)** space," they mean it's kinda slow but doesn't need lots of extra memory.
+알고리즘의 Big-O를 파악하는 것은 대게 수학적 분석을 통해 이루어집니다. 여기서 수학적인 부분은 건너뛰지만, 값들이 어떻게 다른 의미를 가지고 있는지를 아는게 좋습니다. 아래의 표에서 볼 수 있는 **n**은 접근하는 데이터의 개수를 의미합니다. 예를들어 100개의 아이템이 있는 배열을 정렬한다면 **n = 100**입니다.
 
-Figuring out the Big-O of an algorithm is usually done through mathematical analysis. We're skipping the math here, but it's useful to know what the different values mean, so here's a handy table. **n** refers to the number of data items that you're processing. For example, when sorting an array of 100 items, **n = 100**.
 
-Big-O | Name | Description
-------| ---- | -----------
+Big-O | 이름 | 설명
+------| ---- | ----
 **O(1)** | constant | **This is the best.** The algorithm always takes the same amount of time, regardless of how much data there is. Example: looking up an element of an array by its index.
 **O(log n)** | logarithmic | **Pretty great.** These kinds of algorithms halve the amount of data with each iteration. If you have 100 items, it takes about 7 steps to find the answer. With 1,000 items, it takes 10 steps. And 1,000,000 items only take 20 steps. This is super fast even for large amounts of data. Example: binary search.
 **O(n)** | linear | **Good performance.** If you have 100 items, this does 100 units of work. Doubling the number of items makes the algorithm take exactly twice as long (200 units of work). Example: sequential search.
