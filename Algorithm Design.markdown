@@ -1,23 +1,23 @@
-# Algorithm design techniques
+# 알고리즘 설계 기술
 
-What to do when you're faced with a new problem and you need to find an algorithm for it.
+새로운 문제에 직면하고 이것을 위한 알고리즘을 찾을 필요가 있을때 해야 할 일
 
-### Is it similar to another problem?
+### 다른 문제와 비슷한가?
 
-If you can frame your problem in terms of another, more general problem, then you might be able to use an existing algorithm. Why reinvent the wheel?
+문제를 다른 문제 또는 더 일반적인 문제와 연관지어 틀을 만들 수 있다면, 아마 존재하는 알고리즘을 사용할 수 있을것입니다. 쓸데없이 다시 개발할 필요는 없잖아요?
 
-One thing I like about [The Algorithm Design Manual](http://www.algorist.com) by Steven Skiena is that it includes a catalog of problems and solutions you can try. (See also his [algorithm repository](http://www3.cs.stonybrook.edu/~algorith/).)
+제가 좋아하는것 중에 하나인 Steven Skiena가 저술한 [The Algorithm Design Manual](http://www.algorist.com)가 시도해볼 수 있는 여러 문제들과 솔루션들에 대해 다루고있습니다. (그가 저술한 다른 글도 봐보세요 [algorithm repository](http://www3.cs.stonybrook.edu/~algorith/).)
 
-### It's OK to start with brute force
+### 브루트 포스로 시작해도 좋습니다.
 
-Naive, brute force solutions are often too slow for practical use but they're a good starting point. By writing the brute force solution, you learn to understand what the problem is really all about.
+무식하게 브루트포스 솔루션을 실제로 사용하는것은 느릴 지 모르지만, 이또한 좋은 시작이라고 생각합니다. 브루트포스 솔루션을 사용해보면서 진짜 문제가 어떤 것이었는지 이해하는 법을 배우게됩니다.
 
-Once you have a brute force implementation you can use that to verify that any improvements you come up with are correct. 
+일단 브루투포스를 수행해보면 그것을 이용해 자신이 발견한 개선안들이 맞는지 확인해 볼 수 있습니다.
 
-And if you only work with small datasets, then a brute force approach may actually be good enough on its own. Don't fall into the trap of premature optimization!
+만약 작은 데이터셋으로 일을 한다면 브루트포스가 충분히 좋을 수 있지만, 너무 이러한 최적화의 함정에 빠지지마세요
 
-### Divide and conquer
+### 분할 정복
 
-A big problem is often just a whole bunch of much smaller problems.
+큰 문제들은 결국 작은 문제들의 덩어리입니다.
 
-[More to come here]
+[내용이 추가될 예정입니다.]
