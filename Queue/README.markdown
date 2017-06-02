@@ -1,48 +1,49 @@
-# Queue
+# 큐(Queue)
 
-A queue is a list where you can only insert new items at the back and remove items from the front. This ensures that the first item you enqueue is also the first item you dequeue. First come, first serve!
+큐는 새로운 아이템을 뒤에만 추가할 수 있고 앞에서만 데이터를 지울 수 있는 리스트입니다. 확실히 처음 넣은 데이터가 가장 먼저 나오는 아이템입니다. 즉 FIFO(first in, first out)입니다.
 
-Why would you need this? Well, in many algorithms you want to add objects to a temporary list and pull them off this list later. Often the order in which you add and remove these objects matters.
+왜 이걸 하려고 하냐구요? 글쎄요.. 많은 알고리즘에서 임시 목록에 데이터를 추가하고 싶을수도 있으며 마지막에 빼고싶을 수도 있겠죠. 이렇게 값을 추가하고 제거하는 순서가 중요할 때가 많습니다.
 
-A queue gives you a FIFO or first-in, first-out order. The element you inserted first is the first one to come out. It is only fair! (A similar data structure, the [stack](../Stack/), is LIFO or last-in first-out.)
+큐는 FIFO(first-in, first-out)의 순서로 작동합니다. 가장 먼저 넣은 값이 가장 먼저 나오는 값이 될 것입니다. 그래서 이것은 공평합니다.(비슷한 자료구조로 [스텍](../Stack/)이 있으며 스텍은 LIFO(last-in first-out)의 순서로 작동합니다.)
 
+여기 숫자를 큐에 enqueue 예제가 있습니다.
 Here is an example to enqueue a number:
 
 ```swift
 queue.enqueue(10)
 ```
 
-The queue is now `[ 10 ]`. Add the next number to the queue:
+큐는 현재 `[ 10 ]`입니다. 큐에 다음 숫자를 더해줍시다:
 
 ```swift
 queue.enqueue(3)
 ```
 
-The queue is now `[ 10, 3 ]`. Add one more number:
+큐는 현재 `[ 10, 3 ]`입니다. 숫자 하나를 더 더해봅시다:
 
 ```swift
 queue.enqueue(57)
 ```
 
-The queue is now `[ 10, 3, 57 ]`. Let's dequeue to pull the first element off the front of the queue:
+큐는 현재`[ 10, 3, 57 ]`입니다. 큐에 처음에 넣은 값이 나오도록 dequeue해봅시다
 
 ```swift
 queue.dequeue()
 ```
 
-This returns `10` because that was the first number we inserted. The queue is now `[ 3, 57 ]`. Everyone moved up by one place.
+`10`을 리턴합니다. 왜냐하면 `10`이 우리가 처음에 넣은 값이기 때문입니다. 현재 큐는`[ 3, 57 ]`입니다. 
 
+한번 더 dequeue해봅시다
 ```swift
 queue.dequeue()
 ```
 
-This returns `3`, the next dequeue returns `57`, and so on. If the queue is empty, dequeuing returns `nil` or in some implementations it gives an error message.
+`3`을 리턴합니다. 계속해서 다음 dequeue는 `57`을 리턴합니다. 만약 큐가 비어있다면 dequeue는`nil`을 리턴하거나, 에러메시지를 출력할 것입니다.
 
-> **Note:** A queue is not always the best choice. If the order in which the items are added and removed from the list is not important, you can use a [stack](../Stack/) instead of a queue. Stacks are simpler and faster.
-
+> **Note:** 큐가 항상 최선의 선택은 아닙니다. 만약 값이 더해지고 지워지는 순서가 중요하지 않은 리스트라면 큐 대신에 스텍을 사용하세요. 스텍이 더 단순하고 빠릅니다.
 ## The code
 
-Here is a simplistic implementation of a queue in Swift. It is a wrapper around an array to enqueue, dequeue, and peek at the front-most item:
+아래 코드는 가장 단순하게 큐가 Swift로 실행되는 코드입니다. 배열에서 enqueue, dequeue 그리고 peek할 수 있도록 하고 있습니다.
 
 ```swift
 public struct Queue<T> {
@@ -74,11 +75,13 @@ public struct Queue<T> {
 }
 ```
 
-This queue works well, but it is not optimal.
+이 큐는 잘 작동하지만 바람직한 방법은 아닙니다.
 
-Enqueuing is an **O(1)** operation because adding to the end of an array always takes the same amount of time regardless of the size of the array.
+Enqueue 하는것은 **O(1)**의 성능을 냅니다. 왜냐하면 배열 마지막에 값을 더하는 것은 배열의 크기에 상관없이 항상 같은 시간을 요구하기 때문입니다.
 
-You might be wondering why appending items to an array is **O(1)** or a constant-time operation. That is because an array in Swift always has some empty space at the end. If we do the following:
+아이템을 배열에 더하는 것이 왜 **O(1)**만큼의 성능을 내는지 궁금해 할 것입니다.. 왜냐하면 스위프트는 항상 끝에 빈 공간이 있기때문입니다. 
+
+만약 우리가 다음과 같이 코드를 작성한다면:
 
 ```swift
 var queue = Queue<String>()
@@ -86,24 +89,21 @@ queue.enqueue("Ada")
 queue.enqueue("Steve")
 queue.enqueue("Tim")
 ```
-
-then the array might actually look like this:
+배열은 아마 다음과 같이 보일 것입니다:
 
 	[ "Ada", "Steve", "Tim", xxx, xxx, xxx ]
-
-where `xxx` is memory that is reserved but not filled in yet. Adding a new element to the array overwrites the next unused spot:
+`xxx`가 있는곳은 예약되어 있지만 아직 채워지지 않은 메모리입니다. 새로은 값을 배열에 추가하는 것은 사용되지 않은 공간을 덮어쓰는 것과 같습니다:
 
 	[ "Ada", "Steve", "Tim", "Grace", xxx, xxx ]
+메모리의 한 공간으로부터 다른 공간으로 복사한 결과는 항상 동일한 시간 성능을 가집니다.
 
-This results by copying memory from one place to another which is a constant-time operation.
+여기에는 제한적인 양의 미사용 공간이 배열 끝에 있습니다. 만약 마지막 `xxx`가 사용된다면 다음 아이템을 추가하고 싶을 것입니다. 그럼 배열은 더많은 공간을 만들기 위해 크기를 재조정할 필요가 있습니다.
 
-There are only a limited number of unused spots at the end of the array. When the last `xxx` gets used, and you want to add another item, the array needs to resize to make more room.
+크기를 재조정하는것은 새로운 메모리를 할당하고 존재하는 모든 데이터를 새로운 배열에 복사하는 작업을 포함합니다. 이것은 **O(n)**정도의 성능으로 조금 느립니다. 이러한 작업은 가끔 발생하지만 새로운 값을 추가하는데 걸리는 시간은 평균적으로**O(1)** 정도입니다.
 
-Resizing includes allocating new memory and copying all the existing data over to the new array. This is an **O(n)** process which is relatively slow. Since it happens occasionally, the time for appending a new element to the end of the array is still **O(1)** on average or **O(1)** "amortized".
+하지만 dequeue하는 것은 다른 이야기입니다. dequeue하기 위해서는 우리는 배열의 시작점(처음)에 있는 값을 지워야 합니다. 이 작업은 항상 **O(n)** 의 성능을 요구합니다. 왜냐하면 배열에 존재하는 모든 값들을 메모리로부터 이동되어야하기 때문입니다.
 
-The story for dequeueing is different. To dequeue, we remove the element from the *beginning* of the array. This is always an **O(n)** operation because it requires all remaining array elements to be shifted in memory.
-
-In our example, dequeuing the first element `"Ada"` copies `"Steve"` in the place of `"Ada"`, `"Tim"` in the place of `"Steve"`, and `"Grace"` in the place of `"Tim"`:
+우리의 예제에서, `”Ada"`를 dequeue하는것은 `"Steve"`를 `”Ada"`위치에 복사하고, `"Tim"`을`"Steve"`위치에, 그리고 `”Grace"`를 `”Tim”`위치에 복사하는 것입니다.:
 
 	before   [ "Ada", "Steve", "Tim", "Grace", xxx, xxx ]
 	                   /       /      /
@@ -112,25 +112,28 @@ In our example, dequeuing the first element `"Ada"` copies `"Steve"` in the plac
 	                /       /      /
 	 after   [ "Steve", "Tim", "Grace", xxx, xxx, xxx ]
  
-Moving all these elements in memory is always an **O(n)** operation. So with our simple implementation of a queue, enqueuing is efficient, but dequeueing leaves something to be desired...
+메모리에 있는 이러한 모든 값을을 이동하는 것은 항상 **O(n)**성능을 요구합니다. 따라서 위의 간단한 실행에서 enqueue하는 것은 효과적이지만, dequeue하는 작업은 바람직하지 않습니다
 
-## A more efficient queue
+## 더 효과적인 큐
 
-To make dequeuing efficient, we can also reserve some extra free space but this time at the front of the array. We must write this code ourselves because the built-in Swift array does not support it.
+dequeue하는것을 더 효과적으로 만들려면 enqueue와 마찬가지로 여분의 여유 공간을 예약하는 것입니다. 하지만 이번에는 뒤가 아닌 앞에 그 공간을 만들어야합니다. 스위프트에서 기본적으로 제공하는 배열에는 이러한 기능을 제공하지 않으므로 이 코드를 우리가 직접 작성해야합니다.
 
-The main idea is whenever we dequeue an item, we do not shift the contents of the array to the front (slow) but mark the item's position in the array as empty (fast). After dequeuing `"Ada"`, the array is:
+결국 목표는 언제든지 값을 dequeue하든지 배열의 값들을 앞으로 옮기지 않는 것입니다(느리기때문에) 그 대신에 그 자리가 비어있다고 표시하는 겁니다.
+`”Ada"`를 dequeue하면 배열은 다음과 같을 것입니다:
 
 	[ xxx, "Steve", "Tim", "Grace", xxx, xxx ]
 
-After dequeuing `"Steve"`, the array is:
+`”Steve"`를 dequeue하면, 배열은 다음과 같을 것입니다:
 
 	[ xxx, xxx, "Tim", "Grace", xxx, xxx ]
 
-Because these empty spots at the front never get reused, you can periodically trim the array by moving the remaining elements to the front:
+앞에 있는 빈 공간은 절대 다시 사용하지 않을 것이기때문에 주기적으로 나머지 값들을 앞으로 옮김으로써 배열을 정돈시킬 수 있습니다.:
 
 	[ "Tim", "Grace", xxx, xxx, xxx, xxx ]
 
-This trimming procedure involves shifting memory which is an **O(n)** operation. Because this only happens once in a while, dequeuing is **O(1)** on average.
+이렇게 정돈하는 순서는 메모리 이동을 요구하므로 **O(n)**의 성능을 냅니다. 왜냐하면 이러한 작업은 한번 작업되지만 dequeue하는 작업은 평균저긍로 **O(1)**정도의 성능입니다.
+
+[계속해서 번역중]
 
 Here is how you can implement this version of `Queue`:
 
