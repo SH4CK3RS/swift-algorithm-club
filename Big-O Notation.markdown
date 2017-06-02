@@ -17,7 +17,8 @@ Big-O | 이름 | 설명
 **O(2^n)** | exponential | **매우 형편없습니다.** 이런 종류의 알고리즘을 피하고싶겠지만 선택의 여지가 없을 때도 있습니다. 단순히 한 비트를 입력값에 더하면 실행 시간이 두배가 됩니다. 예: traveling salesperson problem.
 **O(n!)** | factorial | **참을 수 없이 느립니다.** 한마디로 무언갈 할 떄 100만년이 걸린다고 보면 됩니다.
 
-Often you don't need math to figure out what the Big-O of an algorithm is but you can simply use your intuition. If your code uses a single loop that looks at all **n** elements of your input, the algorithm is **O(n)**. If the code has two nested loops, it is **O(n^2)**. Three nested loops gives **O(n^3)**, and so on.
+알고리즘이 어떤 Big-O인지 알아내는 작업에 수학이 자주 필요한 것은 아니지만, 어느정도 직감이 필요합니다. 만약 입력받은 값에서 모든 n개의 요소를 찾는 하나의 반복문을 실행하는 코드라면 그 알고리즘은  **O(n)** 입니다. 
+만약 이중 반복문이라면 **O(n^2)**이며. 3중 반복문은 **O(n^3)**입니다.
 
 Big-O 표기법은 추정치를 의미하며 실제로 ** n ** 값이 큰 경우에만 유용합니다. 예를들어   최악의 실행시간을 가지는 [insertion sort](Insertion%20Sort/) 알고리즘은 **O(n^2)**입니다. 이론상으로는 [merge sort](Merge%20Sort/)의 실행시간보다 나쁘지만 **O(n log n)**입니다. 데이터의 양은 적지만, insertion sort는 확실히 빠릅니다. 특히 배열이 이미 부분적으로 정렬이 되있다면요.
 
