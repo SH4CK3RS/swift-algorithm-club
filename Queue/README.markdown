@@ -133,9 +133,7 @@ dequeue하는것을 더 효과적으로 만들려면 enqueue와 마찬가지로 
 
 이렇게 정돈하는 순서는 메모리 이동을 요구하므로 **O(n)**의 성능을 냅니다. 왜냐하면 이러한 작업은 한번 작업되지만 dequeue하는 작업은 평균저긍로 **O(1)**정도의 성능입니다.
 
-[계속해서 번역중]
-
-Here is how you can implement this version of `Queue`:
+아래 코드는 위의 코드를 적용한 버전의 큐입니다::
 
 ```swift
 public struct Queue<T> {
@@ -179,9 +177,9 @@ public struct Queue<T> {
 }
 ```
 
-The array now stores objects of type `T?` instead of just `T` because we need to mark array elements as being empty. The `head` variable is the index in the array of the front-most object.
+이 배열은 자리에 값이 비어있다는 것을 표현해줘야 하기때문에 `T` 가 아닌 `T?`타입의 객체를 저장합니다.  `head`  변수는 배열에서 가장 앞에 있는 값을 가리킵니다.(실제로 값이 존재하는 구간의 제일 앞부분)
 
-Most of the new functionality sits in `dequeue()`. When we dequeue an item, we first set `array[head]` to `nil` to remove the object from the array. Then, we increment `head` because the next item has become the front one.
+대부분의 새로운 기능은 `dequeue()`에 있습니다. 아이템을 dequeue할 때 배열로부터 객체를 지우기 위해 `array[head]`를 `nil`로 설정합니다.  Then, we increment `head` because the next item has become the front one.
 
 We go from this:
 
@@ -193,9 +191,9 @@ to this:
 	[ xxx, "Steve", "Tim", "Grace", xxx, xxx ]
 	        head
 
-It is like if in a supermarket the people in the checkout lane do not shuffle forward towards the cash register, but the cash register moves up the queue.
+이것은 마치 슈퍼마켓에 있는 사람들에 계산을 하기위해 새치기를 하지 않고 줄을 서 있는것과 같습니다. 하지만 계산은 큐처럼 이루어집니다.
 
-If we never remove those empty spots at the front then the array will keep growing as we enqueue and dequeue elements. To periodically trim down the array, we do the following:
+배열의 앞부분에 있는 빈 공간을 지우지 않고 계속해서 enqueue 및 dequeue를 한다면 배열의 크기는 한없이 커질 것입니다. 아래에 코드에 구현된 것처럼 주기적으로 배열을 정돈해주세요:
 
 ```swift
     let percentage = Double(head)/Double(array.count)
@@ -204,9 +202,9 @@ If we never remove those empty spots at the front then the array will keep growi
       head = 0
     }
 ```
+위의 코드는 시작 부분에 있는 빈공간과 배열의 크기에 대한 비율을 계산합니다. 그래서 만약 사용하지 않는 공간의 비율이 25%가 넘는다면 낭비되는 공간을 걸러냅니다. 하지만 만약 배열의 크기가 작다면 항상 사이즈를 재조정하는 것은 아닙니다. 그래서 배열을 정돈해주려면 최소한 50개의 요소가 배열에 존재해야합니다.
 
-This calculates the percentage of empty spots at the beginning as a ratio of the total array size. If more than 25% of the array is unused, we chop off that wasted space. However, if the array is small we do not resize it all the time, so there must be at least 50 elements in the array before we try to trim it. 
-
+[계속 번역중]
 > **Note:** I just pulled these numbers out of thin air -- you may need to tweak them based on the behavior of your app in a production environment.
 
 To test this in a playground, do the following:
