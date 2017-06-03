@@ -207,7 +207,7 @@ to this:
 [계속 번역중]
 > **Note:** I just pulled these numbers out of thin air -- you may need to tweak them based on the behavior of your app in a production environment.
 
-To test this in a playground, do the following:
+플레이그라운드에서 아래의 코드를 테스트해보세요:
 
 ```swift
 var q = Queue<String>()
@@ -232,19 +232,20 @@ q.array             // [nil, nil, {Some "Tim"}, {Some "Grace"}]
 q.count             // 2
 ```
 
+정돈 방법을 변경하려면
 To test the trimming behavior, replace the line,
 
 ```swift
     if array.count > 50 && percentage > 0.25 {
 ```
 
-with:
+위에 있는 코드를 아래 코드로 바꿔주세요:
 
 ```swift
     if head > 2 {
 ```
 
-Now if you dequeue another object, the array will look as follows:
+이제 다른 객체를 dequeue하면 배열은 아래 보는것과 같을 것입니다:
 
 ```swift
 q.dequeue()         // "Tim"
@@ -252,12 +253,13 @@ q.array             // [{Some "Grace"}]
 q.count             // 1
 ```
 
+앞에 있는`nil` 객체는 지워졌습니다. 그래서 배열은 더이상 공간을 낭비하지 않아도 됩니다. 이 새로운 버전의 큐는 처읍 버전처럼 복잡하지 않으며 이제 dequeue할 때도 **O(1)**의 성능을 냅니다. 이제 우리는 배열을 다루는 방법을 배웠습니다.
 The `nil` objects at the front have been removed, and the array is no longer wasting space. This new version of `Queue` is not more complicated than the first one but dequeuing is now also an **O(1)** operation, just because we were aware about how we used the array.
 
-## See also
+## 이것도 봐보세요
 
-There are many ways to create a queue. Alternative implementations use a [linked list](../Linked%20List/), a [circular buffer](../Ring%20Buffer/), or a [heap](../Heap/). 
+큐를 만드는 방법은 매우 다양하며 그 방법으로는 [linked list](../Linked%20List/)를 사용하거나, [circular buffer](../Ring%20Buffer/) 또는 [heap](../Heap/을 사용하세요
 
-Variations on this theme are [deque](../Deque/), a double-ended queue where you can enqueue and dequeue at both ends, and [priority queue](../Priority%20Queue/), a sorted queue where the "most important" item is always at the front.
+이것의 변형으로 양 단에 enqueue 및 dequeue할 수 있는[deque](../Deque/)가 있으며 “가장 중요한” 아이템이 항상 가장 앞으로 오는 [priority queue](../Priority%20Queue/)가 있습니다.
 
-*Written for Swift Algorithm Club by Matthijs Hollemans*
+*이 글은 Swift Algorithm Club을 위해 Matthijs Hollemans로부터 작성되었습니다.*
