@@ -1,49 +1,49 @@
-# Insertion Sort
+# 삽입 정렬
 
-Goal: Sort an array from low to high (or high to low).
+목표: 배열을 낮은쪽에서 높은쪽으로(또는 높은쪽에서 낮은쪽으로) 정렬할 수 있다.
 
-You are given an array of numbers and need to put them in the right order. The insertion sort algorithm works as follows:
+당신은 숫자로 이루어진 배열이 주어져 있고, 알맞은 순서로 정렬을 해야합니다. 삽입 정렬 알고리즘은 다음과 같이 작동합니다:
 
-- Put the numbers on a pile. This pile is unsorted.
-- Pick a number from the pile. It doesn't really matter which one you pick, but it's easiest to pick from the top of the pile. 
-- Insert this number into a new array. 
-- Pick the next number from the unsorted pile and also insert that into the new array. It either goes before or after the first number you picked, so that now these two numbers are sorted.
-- Again, pick the next number from the pile and insert it into the array in the proper sorted position.
-- Keep doing this until there are no more numbers on the pile. You end up with an empty pile and an array that is sorted.
+숫자를 더미에 쌓습니다. 숫자더미들은 정렬되어있지않습니다.
+숫자더미로부터 숫자를 고릅니다. 어떤 숫자를 고를지는 중요하지 않지만 가장 쉬운 방법은 숫자더미의 가장 위에 있는 숫자를 고르는 것입니다.
+고른 숫자를 새로운 배열에 집어넣습니다.
+다음 숫자를 정렬되지 않은 숫자더미에서 고르고 또 다시 새로운 배열에 집어 넣습니다. 그리고 처음 고른 숫자 뒤 또는 앞으로 방금 고른 숫자를 집어넣어 두 숫자가 정렬되도록합니다.
+다시 숫자를 고르고 배열에 적절히 정렬된 위치에 넣어줍니다.
+숫자더미에 더이상 숫자가 존재하지 않을 때까지 이 과정을 반복합니다. 그러면 빈 숫자더미와 정렬된 배열을 얻었을 것입니다.
 
-That's why this is called an "insertion" sort, because you take a number from the pile and insert it in the array in its proper sorted position. 
+숫자더미에서 숫자를 뽑아 배열의 적절히 정렬된 위치로 넣는다는것 때문에 “삽입" 정렬로 불립니다.
 
-## An example
+## 예제
 
-Let's say the numbers to sort are `[ 8, 3, 5, 4, 6 ]`. This is our unsorted pile.
+`[ 8, 3, 5, 4, 6 ]` <— 이 숫자들이 정렬이 필요한 숫자라고 합시다. 이것은 정렬되지 않은 숫자더미입니다.
 
-Pick the first number, `8`, and insert it into the new array. There is nothing in that array yet, so that's easy. The sorted array is now `[ 8 ]` and the pile is `[ 3, 5, 4, 6 ]`.
+첫번째 숫자인 `8`을 고르고 새로운 배열에 넣어줍니다. 아직 배열이 없기때문에 이 작업은 쉽습니다. 그럼 정렬된 배열은 지금 `[ 8 ]`이며 숫자더미는 `[ 3, 5, 4, 6 ]` 입니다.
 
-Pick the next number from the pile, `3`, and insert it into the sorted array. It should go before the `8`, so the sorted array is now `[ 3, 8 ]` and the pile is reduced to `[ 5, 4, 6 ]`.
+숫자더미에서 다음 숫자인 `3`을 고르고 방금 정렬돈 배열에 넣어줍니다. 이번 숫자는 `8` 앞으로 가야하기 때문에 이번에 정렬된 배열은 `[ 3, 8 ]`입니다. 그리고 숫자더미는 `[ 5, 4, 6 ]`입니다.
 
-Pick the next number from the pile, `5`, and insert it into the sorted array. It goes in between the `3` and `8`. The sorted array is `[ 3, 5, 8 ]` and the pile is `[ 4, 6 ]`.
+다음 숫자인 `5`를 뽑아 다시 정렬된 배열에 넣어줍니다. 이번 숫자는 `3`과 `8`사이에 넣어줍니다. 그러면 정렬된 배열은 현재 `[ 3, 5, 8 ]`이며, 숫자더미는 `[ 4, 6 ]`입니다.
 
-Repeat this process until the pile is empty.
+숫자더미에서 숫자를 다 뽑을 때까지 이 작업을 반복합니다.
 
-## In-place sort
+## 현재 위치 정렬
 
-The above explanation makes it seem like you need two arrays: one for the unsorted pile and one that contains the numbers in sorted order.
+위의 설명대로라면 두개의 배열이 필요한 것처럼 보입니다. 하나는 정렬되지 않은 숫자더미이며 나머지 하나는 정렬된 숫서의 숫자들을 가지고있습니다.
 
-But you can perform the insertion sort *in-place*, without having to create a separate array. You just keep track of which part of the array is sorted already and which part is the unsorted pile.
+하지만 분리된 배열을 만드는 대신 *현재 위치*를 참고하여 삽입 정렬을 사용 할 수 있습니다.
+But you can perform the insertion sort *in-place*, without having to create a separate array. 단순히 배열을 하나하나 따라가며 어느부분이 정렬되어있고 어느부분이 정렬돼야할  숫자더미인지를 구분할 수 있습니다.
 
-Initially, the array is `[ 8, 3, 5, 4, 6 ]`. The `|` bar shows where the sorted portion ends and the pile begins:
+`[ 8, 3, 5, 4, 6 ]`라는 배열로 시작합시다. `|`는 정렬된부분의 끝과 정렬돼야할 숫자더미의 경계를 보여줍니다:
 
 	[| 8, 3, 5, 4, 6 ]
 
-This shows that the sorted portion is empty and the pile starts at `8`.
-
-After processing the first number, we have:
+위의 배열은 정렬된 부분이 비어있으며, 정렬돼야할 숫자더미가  `8`로 시작된다는것을 보여줍니다.
+처음 숫자를 지나게 되면 다음과 같은 배열을 가지게됩니다:
 
 	[ 8 | 3, 5, 4, 6 ]
 
-The sorted portion is `[ 8 ]` and the pile is `[ 3, 5, 4, 6 ]`. The `|` bar has shifted one position to the right.
+정렬된 부분은 `[ 8 ]`이며 정렬돼야할 부분은 `[ 3, 5, 4, 6 ]`입니다. `|`가 한칸 오른족으로 이동되었습니다.
 
-This is how the content of the array changes during the sort:
+아래 배열들이 어떤식으로 정렬이 되는지를 보여줍니다:
 
 	[| 8, 3, 5, 4, 6 ]
 	[ 8 | 3, 5, 4, 6 ]
@@ -52,35 +52,36 @@ This is how the content of the array changes during the sort:
 	[ 3, 4, 5, 8 | 6 ]
 	[ 3, 4, 5, 6, 8 |]
 
-In each step, the `|` bar moves up one position. As you can see, the beginning of the array up to the `|` is always sorted. The pile shrinks by one and the sorted portion grows by one, until the pile is empty and there are no more unsorted numbers left.
+각 단계에서  `|` 는 한칸씩 이동합니다. 위에서 볼수 있듯이 `|`가 이동하면서 배열이 정렬이 됩니다. 숫자더미는 숫자가 없고 더이상 정렬될 숫자가 없을 때까지 숫자 더미가 하나씩 줄어들고 정렬된 배열이 하나씩 증가합니다. 
 
-## How to insert
+## 어떻게 삽입할까요?
 
-At each step you pick the top-most number from the unsorted pile and insert it into the sorted portion of the array. You must put that number in the proper place so that the beginning of the array remains sorted. How does that work?
+각 단계에서 정렬되지 않으 숫자더미의 가장 위에서부터 숫자를 집어 배열의 정렬된 부분에 집어넣습니다. 꼭 숫자를 적절한 부분에 위치시켜 배열의 시작부터 정렬되도록 하여야합니다. 그럼 어떻게 작동되는 걸까요?
 
-Let's say we've already done the first few elements and the array looks like this:
+그럼 처음 몇개의 요소가 아래와 같이 정렬되어 있다고 합시다:
 
 	[ 3, 5, 8 | 4, 6 ]
 
-The next number to sort is `4`. We need to insert that into the sorted portion `[ 3, 5, 8 ]` somewhere. 
+다음 숫자는 `4`이며, 나머지 `[ 3, 5, 8 ]` 를 어딘가 정렬될 위치에 넣어야 합니다.
 
-Here's one way to do this: Look at the previous element, `8`. 
+정렬하는 방법: `|`이전에 있는 숫자  `8`을 먼저 보세요. 
 
 	[ 3, 5, 8, 4 | 6 ]
 	        ^
 	        
-Is this greater than `4`? Yes it is, so the `4` should come before the `8`. We swap these two numbers to get:
+이 값이 `4`보다 큰가요? 맞습니다, 그래서 `4`는 `8` 앞으로 와야 합니다. 우리는 아래와 같은 배열을 얻기 위해 두 숫자의 위치를 바꿔줍니다:
 
 	[ 3, 5, 4, 8 | 6 ]
 	        <-->
-	       swapped
+	       자리 바뀜
 
-We're not done yet. The new previous element, `5`, is also greater than `4`. We also swap these two numbers:
+아직 정렬해야할 부분이 남았습니다. 새로이 앞에 있는 값인 `5` 또한 `4` 보다 큽니다. 그래서 우리는 이 두 숫자 또한 자리를 바꿔주어야합니다.:
 
 	[ 3, 4, 5, 8 | 6 ]
 	     <-->
-	    swapped
+	    자리 바뀜
 
+[추후 번역 예정]
 Again, look at the previous element. Is `3` greater than `4`? No, it is not. That means we're done with number `4`. The beginning of the array is sorted again.
 
 This was a description of the inner loop of the insertion sort algorithm, which you'll see in the next section. It inserts the number from the top of the pile into the sorted portion by swapping numbers.
