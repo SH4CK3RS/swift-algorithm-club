@@ -82,13 +82,13 @@ But you can perform the insertion sort *in-place*, without having to create a se
 	    자리 바뀜
 
 [추후 번역 예정]
-Again, look at the previous element. Is `3` greater than `4`? No, it is not. That means we're done with number `4`. The beginning of the array is sorted again.
+다시 앞에 있는 값`3`이 `4`보다 큰가요? 아닙니다. 숫자 `4`로 자리 바꿈은 끝났습니다. 다시 배열의 앞부분은 정렬되었습니다.
 
-This was a description of the inner loop of the insertion sort algorithm, which you'll see in the next section. It inserts the number from the top of the pile into the sorted portion by swapping numbers.
+위의 설명은 다음 섹션에서 보게 될 삽입 정렬 알고리즘의 내부 반복에 대한 것입니다. 이것은 숫자의 위치를 바꾸어주면서 그 위치로 숫자더미 가장 위에 있는 값을 넣어줍니다.
 
-## The code
+## 코드
 
-Here is an implementation of insertion sort in Swift:
+아래 코드는 삽입 정렬은 Swift로 작성한 것입니다::
 
 ```swift
 func insertionSort(_ array: [Int]) -> [Int] {
@@ -104,28 +104,28 @@ func insertionSort(_ array: [Int]) -> [Int] {
 }
 ```
 
-Put this code in a playground and test it like so:
+위의 코드를 플레이 그라운드에 넣고 아래와 같이 테스트해보세요:
 
 ```swift
 let list = [ 10, -1, 3, 9, 2, 27, 8, 5, 1, 3, 0, 26 ]
 insertionSort(list)
 ```
 
-Here is how the code works.
+아래는 위의 코드가 어떻게 작동하는지에 대한 설명입니다..
 
-1. Make a copy of the array. This is necessary because we cannot modify the contents of the `array` parameter directly. Like Swift's own `sort()`, the `insertionSort()` function will return a sorted *copy* of the original array.
+1. 배열의 복사본을 만듭니다. 우리가 바로 `배열`의 값을 수정할 수 없기 때문에 이 과정이 필요합니다. 스위프트에 있는 `sort()`처럼 `insertionSort()` 함수도 원래 배열을 복사한 것을 정렬하여 반환합니다.
 
-2. There are two loops inside this function. The outer loop looks at each of the elements in the array in turn; this is what picks the top-most number from the pile. The variable `x` is the index of where the sorted portion ends and the pile begins (the position of the `|` bar). Remember, at any given moment the beginning of the array -- from index 0 up to `x` -- is always sorted. The rest, from index `x` until the last element, is the unsorted pile.
+2. 이 함수에는 두개의 반복문이 있습니다. 바깥의 반복문은 매 턴마다 배열에 어떤 값이 있는지 봅니다. 이것은 숫자더미에서 가장 위에 있는 숫자를 가져와야 할지 보는 과정입니다. 변수 `x`는 정렬이 끝난 부분과 숫자 더미가 시작하는 부분의 인덱스입니다(위치를 `|`로 표시합니다.) . 0부터 `x`까지의 시작부분은 항상 정렬이 되어 있다는 것을 기억하세요 나머지 `x`부터 마지막 값들 까지는 정렬되지 않은 숫자더미입니다.
 
-3. The inner loop looks at the element at position `x`. This is the number at the top of the pile, and it may be smaller than any of the previous elements. The inner loop steps backwards through the sorted array; every time it finds a previous number that is larger, it swaps them. When the inner loop completes, the beginning of the array is sorted again, and the sorted portion has grown by one element.
+3. 안쪽 반복문은 `x` 위치에 어떤 값이 있는지를 봅니다. 그것은 숫자더미의 가장 위에 있는 값이며, 아마 전에 있던 값들보다는 작을 것입니다. 안쪽에 있는 배열은 단계별로 뒤를 밟아 뒤에 있는 값이 지금 값보다 큰지 비교하고 값을 바꿔줍니다.  안쪽 반복문이 다 완료되면 다시 배열의 앞부분은 정렬되며, 정렬된 값이 하나씩 늘어납니다.
 
-> **Note:** The outer loop starts at index 1, not 0. Moving the very first element from the pile to the sorted portion doesn't actually change anything, so we might as well skip it. 
+> **Note:** 바깥에 있는 배열은 인덱스 0이 아닌 1에서 시작합니다. 숫자더미로부터 정렬될 배열의 가장 처음 값을 비교하는 것은 바뀌는 것이 없기 때문에 이 과정은 생략될 것입니다.
 
-## No more swaps
+## 더이상의 자리바꿈은 없습니다.
 
-The above version of insertion sort works fine, but it can be made a tiny bit faster by removing the call to `swap()`. 
+위 버전의 삽입정렬은 잘 작동합니다. `swap()`함수를 호출 하는 과정을 지워줌으로써 속도를 조금 더 빠르게 만들 수 있습니다.
 
-You've seen that we swap numbers to move the next element into its sorted position:
+우리는 정렬된 배열에서 숫자를 다음 값과 바꾸는 것을 보았습니다.
 
 	[ 3, 5, 8, 4 | 6 ]
 	        <-->
@@ -135,21 +135,21 @@ You've seen that we swap numbers to move the next element into its sorted positi
          <-->
 	     swap
 
-Instead of swapping with each of the previous elements, we can just shift all those elements one position to the right, and then copy the new number into the right position.
+숫자를 앞에 있는 값과 계속 바꿔주는 대신 우리는 모든 값을 오른쪽으로 한칸씩 이동시켜주고, 새 숫자를 복사하여 오른쪽에 붙여줄 수 있습니다. Instead of swapping with each of the previous elements, we can just shift all those elements one position to the right, and then copy the new number into the right position.
 
-	[ 3, 5, 8, 4 | 6 ]   remember 4
+	[ 3, 5, 8, 4 | 6 ]   4를 기억합니다.
 	           *
 	
-	[ 3, 5, 8, 8 | 6 ]   shift 8 to the right
+	[ 3, 5, 8, 8 | 6 ]   8을 오른쪽으로 이동시킵니다.
 	        --->
 	        
-	[ 3, 5, 5, 8 | 6 ]   shift 5 to the right
+	[ 3, 5, 5, 8 | 6 ]   5를 오른쪽으로 이동시킵니다.
 	     --->
 	     
-	[ 3, 4, 5, 8 | 6 ]   copy 4 into place
+	[ 3, 4, 5, 8 | 6 ]   4를 그 위치에 복사해줍니다.
 	     *
 
-In code that looks like this:
+코드는 다음과 같습니다:
 
 ```swift
 func insertionSort(_ array: [Int]) -> [Int] {
@@ -167,7 +167,9 @@ func insertionSort(_ array: [Int]) -> [Int] {
 }
 ```
 
-The line at `//1` is what shifts up the previous elements by one position. At the end of the inner loop, `y` is the destination index for the new number in the sorted portion, and the line at `//2` copies this number into place.
+주석`//1`은 앞에 있던 값이 오른쪽으로 이동하는 것을 보여줍니다. 안쪽 배열의 마지막 부분에 있는 `y`는 정렬된 위치에 있는 새로운 숫자의 목적지 인덱스이며, 주석`//2`는 그 숫자를 그 위치에 넣어줍니다.
+
+[추후 번역 예정]
 
 ## Making it generic
 
