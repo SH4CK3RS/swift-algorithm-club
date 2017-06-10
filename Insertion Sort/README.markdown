@@ -169,31 +169,30 @@ func insertionSort(_ array: [Int]) -> [Int] {
 
 주석`//1`은 앞에 있던 값이 오른쪽으로 이동하는 것을 보여줍니다. 안쪽 배열의 마지막 부분에 있는 `y`는 정렬된 위치에 있는 새로운 숫자의 목적지 인덱스이며, 주석`//2`는 그 숫자를 그 위치에 넣어줍니다.
 
-[추후 번역 예정]
 
-## Making it generic
+## generic으로 표시하기
 
-It would be nice to sort other things than just numbers. We can make the datatype of the array generic and use a user-supplied function (or closure) to perform the less-than comparison. This only requires two changes to the code.
+숫자 이외에 다른것들도 정렬하는게 좋을 수 있습니다. generic 배열의 데이터타입을 만들 수있고, 사용자를 도와주는 함수(또는 클로저)를 사용해 비교적 나은 성능을 낼 수 있습니다. 이 작업은 기존의 코드에서 두가지 요소를 바꾸는 것을 필요로합니다.
 
-The function signature becomes:
+함수는 다음과 같이 변합니다:
 
 ```swift
 func insertionSort<T>(_ array: [T], _ isOrderedBefore: (T, T) -> Bool) -> [T] {
 ```
 
-The array has type `[T]` where `T` is the placeholder type for the generics. Now `insertionSort()` will accept any kind of array, whether it contains numbers, strings, or something else.
+배열의 타입은`[T]`이며 `T`는 generic을 위한 표시 기호입니다. 이제  `insertionSort()` 는 숫자든 문자열이든 그리고 그 어떤 타입의 배열이라도 수용할 수 있습니다.
 
-The new parameter `isOrderedBefore: (T, T) -> Bool` is a function that takes two `T` objects and returns true if the first object comes before the second, and false if the second object should come before the first. This is exactly what Swift's built-in `sort()` function does.
+`isOrderedBefore: (T, T) -> Bool`파라미터는  두 개의 `T`객체를 받고 첫번째 객체가 두번째 객체보다 앞이라면 true를 반환하며, 두번째 인자가 첫번째 인자보다 앞에 와야 한다면 false를 반환합니다. 이것이 정확히 Swift에 내장된 `sort()`가 하는 일입니다.
 
-The only other change is in the inner loop, which now becomes:
+아래 코드에서 변한 부분은 안쪽 반복문에 있습니다:
 
 ```swift
       while y > 0 && isOrderedBefore(temp, a[y - 1]) {
 ```
 
-Instead of writing `temp < a[y - 1]`, we call the `isOrderedBefore()` function. It does the exact same thing, except we can now compare any kind of object, not just numbers.
+`temp < a[y - 1]`를 쓰는 대신에, 우리는`isOrderedBefore()`함수를 호출합니다. 이제 기존함수에서 숫자 뿐만이 아닌 어떤 타입의 객체도 비교할 수 있다는 것을 제외하고는 똑같이 작동합니다.
 
-To test this in a playground, do:
+플레이그라운드에서 테스트 해보시려면 다음 코드를 실행하세요:
 
 ```swift
 let numbers = [ 10, -1, 3, 9, 2, 27, 8, 5, 1, 3, 0, 26 ]
@@ -201,38 +200,38 @@ insertionSort(numbers, <)
 insertionSort(numbers, >)
 ```
 
-The `<` and `>` determine the sort order, low-to-high and high-to-low, respectively.
+`<` 와 `>` 는 정렬 순서를 낮은곳에서 높은곳으로 할지, 또는 높은곳에서 낮은곳으로 할지를 결정합니다.
 
-Of course, you can also sort other things such as strings,
+물론 문자열도 정렬할 수 있습니다.
 
 ```swift
 let strings = [ "b", "a", "d", "c", "e" ]
 insertionSort(strings, <)
 ```
 
-or even more complex objects:
+심지어 더 복잡한 객체들도 가능하죠:
 
 ```swift
 let objects = [ obj1, obj2, obj3, ... ]
 insertionSort(objects) { $0.priority < $1.priority }
 ```
 
-The closure tells `insertionSort()` to sort on the `priority` property of the objects.
+클로져는 `insertionSort()`에게 객체의 `우선순위`를기준으로 정렬하라고 말하고 있습니다.
 
-Insertion sort is a *stable* sort. A sort is stable when elements that have identical sort keys remain in the same relative order after sorting. This is not important for simple values such as numbers or strings, but it is important when sorting more complex objects. In the example above, if two objects have the same `priority`, regardless of the values of their other properties, those two objects don't get swapped around.
+삽입 정렬은 *안정적인* 정렬입니다. 정렬은 요소들이 정렬된 이후에도 같은 관계를 가지는 정렬 키를 가지고 있을 때 안정적이라고 할 수 있습니다. 숫자와 문자열과 같은 단순한 값에는 중요하지 않지만 더 복잡한 객체에서 정렬을 할 때는 중요합니다. 위의 예제에서 만약 값에 관계없이 같은 `priority`를 가지고 있다면 그 두 객체는 위치가 바뀌지 않을 것입니다.
 
-## Performance
+## 성능
 
-Insertion sort is really fast if the array is already sorted. That sounds obvious, but this is not true for all search algorithms. In practice, a lot of data will already be largely -- if not entirely -- sorted and insertion sort works quite well in that case.
+삽입 정렬은 이미 배열이 정렬되어있다면 매우 빠릅니다. 말이 이상하게 들릴 수 있지만 모든 검색 알고리즘에서 항상 옳은 것은 아닙니다. 실제로 전체가 아니더라도 많은 데이터들이 많이 정렬되어있는 경우라면 삽입 정렬은 그래도 젛은 성능을 낼 것입니다.
 
-The worst-case and average case performance of insertion sort is **O(n^2)**. That's because there are two nested loops in this function. Other sort algorithms, such as quicksort and merge sort, have **O(n log n)** performance, which is faster on large inputs.
+삽입 정렬의 평균적인 그리고 최악의 성능은 **O(n^2)**입니다. 왜냐하면 이 함수에는 이중 반복문이 있기 때문입니다.퀵소트 및 병합 정렬과 같은 다른 알고리즘은 큰 입력 값에도 빠른 **O(n log n)**의 성능을 가지고 있습니다.
 
-Insertion sort is actually very fast for sorting small arrays. Some standard libraries have sort functions that switch from a quicksort to insertion sort when the partition size is 10 or less.
+삽입 정렬은 작은 배열을 정렬 할 때는 매우 빠릅니다. 몇개의 표준 라이브러리는 분할(partition)사이즈가 10 미만일 경우에 퀵소트를 삽입 정렬로 바꿔주는 함수를 가지고 있습니다.
 
-I did a quick test comparing our `insertionSort()` with Swift's built-in `sort()`. On arrays of about 100 items or so, the difference in speed is tiny. However, as your input becomes larger, **O(n^2)** quickly starts to perform a lot worse than **O(n log n)** and insertion sort just can't keep up.
+이 문서에서는 스위프트의 `sort()`와 우리의 `insertionSort()`를 비교해 보았습니다. 100개 정도의 아이템을 가진 배열에서의 차이는 별로 크지 않습니다.  하지만, 입력 값이 커질수록 **O(n^2)**는 최악의 경우 **O(n log n)**의 성능을 내기 시작하고, 삽입정렬은 더이상 이것을 커버하지 못합니다.
 
-## See also
+## 이것도 봐보세요
 
-[Insertion sort on Wikipedia](https://en.wikipedia.org/wiki/Insertion_sort)
+[Wikipedia에 설명되어 있는 Insertion sort](https://en.wikipedia.org/wiki/Insertion_sort)
 
-*Written for Swift Algorithm Club by Matthijs Hollemans*
+*이 글은 Swift Algorithm Club을 위해 Matthijs Hollemans에 의해 작성되었습니다.*
