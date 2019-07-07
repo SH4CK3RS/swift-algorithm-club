@@ -1,18 +1,17 @@
 # Binary Search
 
-Goal: Quickly find an element in an array.
+목표: 배열로부터 요소를 빠르게 찾기.
 
-Let's say you have an array of numbers and you want to determine whether a specific number is in that array, and if so, at which index.
+숫자로 이루어진 배열이 있고, 그 배열에 특정 숫자가 있다면 어떤 인덱스에 있는지 확인하려고한다고 가정해 보겠습니다.
 
-In most cases, Swift's `indexOf()` function is good enough for that:
+대부분의 경우에 Swift에서는 `indexOf()` 함수를 사융하는 것으로도 충분합니다:
 
 ```swift
 let numbers = [11, 59, 3, 2, 53, 17, 31, 7, 19, 67, 47, 13, 37, 61, 29, 43, 5, 41, 23]
 
 numbers.indexOf(43)  // returns 15
 ```
-
-The built-in `indexOf()` function performs a [linear search](../Linear%20Search/). In code that looks something like this:
+내장 함수 `indexOf()` 는 [선형 탐색](../Linear%20Search/)을 수행합니다. 코드는 다음과 같습니다:
 
 ```swift
 func linearSearch<T: Equatable>(_ a: [T], _ key: T) -> Int? {
@@ -25,15 +24,16 @@ func linearSearch<T: Equatable>(_ a: [T], _ key: T) -> Int? {
 }
 ```
 
-And you'd use it like this:
+그리고 이런 방식으로 사용 가능합니다:
 
 ```swift
 linearSearch(numbers, 43)  // returns 15
 ```
 
-So what's the problem? `linearSearch()` loops through the entire array from the beginning, until it finds the element you're looking for. In the worst case, the value isn't even in the array and all that work is done for nothing.
+그래서 문제가 뭘까요? `linearSearch()` 는 처음부터 찾고자 하는 값을 발견할 떄까지 전체 배열을 순회합니다. 최악의 경우는 배열에 값이 없을 수도 있고 그렇다면 작업이 완료되도 아무것도 얻지 못할 것입니다.
 
-On average, the linear search algorithm needs to look at half the values in the array. If your array is large enough, this starts to become very slow!
+평균적으로 선형 탐색 알고리즘은 배열의 절반을 탐색하는것을 필요로하며, 배열이 커질 경우 작업은 매우 느려지게됩니다!
+
 
 ## Divide and conquer
 
