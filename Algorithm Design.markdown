@@ -21,3 +21,6 @@
 큰 문제들은 결국 작은 문제들의 덩어리입니다.
 
 [내용이 추가될 예정입니다.]
+
+
+*Translated by Byeonggeun Son*
