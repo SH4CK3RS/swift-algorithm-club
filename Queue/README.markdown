@@ -262,4 +262,7 @@ The `nil` objects at the front have been removed, and the array is no longer was
 
 이것의 변형으로 양 단에 enqueue 및 dequeue할 수 있는[deque](../Deque/)가 있으며 “가장 중요한” 아이템이 항상 가장 앞으로 오는 [priority queue](../Priority%20Queue/)가 있습니다.
 
-*이 글은 Swift Algorithm Club을 위해 Matthijs Hollemans로부터 작성되었습니다.*
+*Written for Swift Algorithm Club by Matthijs Hollemans*
+
+*Translated By Byeonggeun Son*
+
