@@ -1,4 +1,4 @@
-# Binary Search
+# 이진 
 
 목표: 배열로부터 요소를 빠르게 찾기.
 
@@ -35,26 +35,26 @@ linearSearch(numbers, 43)  // returns 15
 평균적으로 선형 탐색 알고리즘은 배열의 절반을 탐색하는것을 필요로하며, 배열이 커질 경우 작업은 매우 느려지게됩니다!
 
 
-## Divide and conquer
+## 분할 정복
 
-The classic way to speed this up is to use a *binary search*. The trick is to keep splitting the array in half until the value is found.
+고전적인 방법으로 선형 탐색의 속도를 올리는 방법은 *이진 탐색*이다. 이 방법은 원하는 값을 찾을 때까지 배열을 반으로 나누는 것이다. 
 
-For an array of size `n`, the performance is not **O(n)** as with linear search but only **O(log n)**. To put that in perspective, binary search on an array with 1,000,000 elements only takes about 20 steps to find what you're looking for, because `log_2(1,000,000) = 19.9`. And for an array with a billion elements it only takes 30 steps. (Then again, when was the last time you used an array with a billion items?)
+선형 탐색에서 크기가 `n`인 배열의 경우 성능은 **O(n)**이 아니라 **O(log n)**이다. 이러한 관점에서 봤을 때 1,000,000개의 요소로 이루어진 배열에서 이진 탐색은 `log_2(1,000,000) = 19.9`이므로 원하는 데이터를 찾는데 약 20단계를 거친다. 그리고 10억개의 데이터가 있는 배열의 경우 오직 30단계만 거친다. (더해서.. 10억개 이상의 데이터 배열을 사용한게 언제가 마지막인가요?..)
 
-Sounds great, but there is a downside to using binary search: the array must be sorted. In practice, this usually isn't a problem.
+좋습니다. 하지만 이진탐색이 부적합한 경우도 있습니다: 배열이 정렬되어야할때. 실제로, 이런게 일반적으로 문제가 되진 않습니다.
 
-Here's how binary search works:
+다음은 이진 탐색이 작동하는 방법입니다:
 
-- Split the array in half and determine whether the thing you're looking for, known as the *search key*, is in the left half or in the right half.
-- How do you determine in which half the search key is? This is why you sorted the array first, so you can do a simple `<` or `>` comparison.
-- If the search key is in the left half, you repeat the process there: split the left half into two even smaller pieces and look in which piece the search key must lie. (Likewise for when it's the right half.)
-- This repeats until the search key is found. If the array cannot be split up any further, you must regrettably conclude that the search key is not present in the array.
+- 배열을 반으로 나눈 후 *search key*라고 하는 찾고자하는 값이 어디에 반으로 나눈 좌측에 있는지 아니면 우측에 있는지 특정합니다.
+- 그렇다면 어떻게 key가 어디에 있는지 특정할 수 있을까요? 이것이 먼저 배열을 정렬해야하는 이유아며, 단순히 `<` 또는 `>`와 같은 비교 연산을 사용할 수 있습니다.
+- 만약 search key가 반으로 나눈 배열 중 왼쪽이라면 해당 배열에 같은 과정을 반복합니다: 왼쪽 배열을 계속하여더 작은배열로 만드는 과정을 반복하여 key가 어디에 있는지 탐색합니다.(만약 오른쪽 배여링라면 해당 배열에서도 마찬가지로 반복합니다.)
+- search key가 발견될 떄 까지 해당 작업을 반복합니다. 만약 배열이 더이상 둘로 나뉘어질 수 없을때까지 해당 작업을 반복했다면 애석하게도 해당 배열에서 찾고자 하는 search key는 존재 하지 않는것입니다.
 
-Now you know why it's called a "binary" search: in every step it splits the array into two halves. This process of *divide-and-conquer* is what allows it to quickly narrow down where the search key must be.
+이제 이게 왜 "이진" 탐색이라고 불리는지 아실것입니다: 모든 과정에서 배열을 두개로 나눕니다. 이 과정에서 *분할과 정복*은 빠르게 범위를 좁혀서 search key를 찾는 것입니다.
 
-## The code
+## 코드
 
-Here is a recursive implementation of binary search in Swift:
+다음 코드는 이진 탐색을 Swift에서 적용한 것입니다:
 
 ```swift
 func binarySearch<T: Comparable>(_ a: [T], key: T, range: Range<Int>) -> Int? {
@@ -82,7 +82,7 @@ func binarySearch<T: Comparable>(_ a: [T], key: T, range: Range<Int>) -> Int? {
 }
 ```
 
-To try this out, copy the code to a playground and do:
+해당 코드를 실행해보기 위해서 아래 코드를 복사하여 Playground에서 실행해보세요:
 
 ```swift
 let numbers = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67]
@@ -90,36 +90,36 @@ let numbers = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 6
 binarySearch(numbers, key: 43, range: 0 ..< numbers.count)  // gives 13
 ```
 
-Note that the `numbers` array is sorted. The binary search algorithm does not work otherwise!
+`숫자`배열이 정렬되어있는 것에 주목하세요. 이진 탐색 알고리즘은 정렬되지 않은 배열에서는 효과가 없습니다.
 
-I said that binary search works by splitting the array in half, but we don't actually create two new arrays. Instead, we keep track of these splits using a Swift `Range` object. Initially, this range covers the entire array, `0 ..< numbers.count`.  As we split the array, the range becomes smaller and smaller.
+이진 탐색은 배열을 반으로 분할하여 작동한다고 말씀드렸습니다. 하지만 두개의 새로운 배열을 만드는 것이 아닙니다. 대신에, Swift의 `Range`객체를 이용하여 분할을 추적합니다. 처음 `0 ..< numbers.count`로 전체 배열의 범위를 다룹니다. 배열을 반으로 나누면서 해당 범위가 점점 작아지는 것입니다. 
 
-> **Note:** One thing to be aware of is that `range.upperBound` always points one beyond the last element. In the example, the range is `0..<19` because there are 19 numbers in the array, and so `range.lowerBound = 0` and `range.upperBound = 19`. But in our array the last element is at index 18, not 19, since we start counting from 0. Just keep this in mind when working with ranges: the `upperBound` is always one more than the index of the last element.
+> **주목:** 한가지 알고 넘어가야할 부분은 `range.upperBound`가 항상 마지막 요소의 다음을 가리키고 있다는 것입니다. 예시로, 범위가 `0..<19` 일때 총 19개의 숫자가 배열에 있기 때문에 `range.lowerBound = 0`이며 `range.upperBound = 19`입니다. 하지만 배열의 index는 0부터 세기 때문에 우리의 배열에서 마지막 요소의 index는 19가 아닌 18입니다. 따라서 ranges를 사용할 때에는 이 점을 숙지해두세요: `upperBound`는 마지막 index보다 값이 하나 더 높습니다.
 
-## Stepping through the example
+## 예제로 봅시다.
 
-It might be useful to look at how the algorithm works in detail.
+어떻게 알고리즙이 작동하는지 자세히 보는게 유용할 것입니다..
 
-The array from the above example consists of 19 numbers and looks like this when sorted:
+위의 예제에서의 배열은 19개의 숫자로 이루어져있고, 정렬되어있다면 다음과 같을 것입니다:
 
 	[ 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67 ]
 
-We're trying to determine if the number `43` is in this array.
+우리는 `43`이라는 숫자가 해당 배열에 있는지 확인해볼 것입니다.
 
-To split the array in half, we need to know the index of the object in the middle. That's determined by this line:
+배열을 반으로 나누기 위해 우리는 이 배열의 중간 값의 index를 알 필요가 있습니다. 다음 줄에서 해당 index를 구할 수 있습니다.:
 
 ```swift
 let midIndex = range.lowerBound + (range.upperBound - range.lowerBound) / 2
 ```
 
-Initially, the range has `lowerBound = 0` and `upperBound = 19`. Filling in these values, we find that `midIndex` is `0 + (19 - 0)/2 = 19/2 = 9`. It's actually `9.5` but because we're using integers, the answer is rounded down.
+range는 `lowerBound = 0`이며 `upperBound = 19`입니다. 우리는  `midIndex` 가 `0 + (19 - 0)/2 = 19/2 = 9` 인것을 확인할 수 있습니다. 실제로는 `9.5`이지만 우리는 정수를 사용하기 때문에 내림을 사용하여 `9`입니다.
 
-In the next figure, the `*` shows the middle item. As you can see, the number of items on each side is the same, so we're split right down the middle.
+다음으로 `*`는 중간 값을 가리킵니다. 보시다시피, 양쪽 숫자의 개수는 같으므로 중간을 기점으로 배열을 두개로 나눌 수 있습니다.
 
 	[ 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67 ]
                                       *
 
-Now binary search will determine which half to use. The relevant section from the code is:
+이제 이진 탐색은 반으로 나눈 배열중 어떤 배열을 더 사용할지 특정합니다. 해당 부분에 대한 코드는 다음과 같습니다:
 
 ```swift
 if a[midIndex] > key {
@@ -131,45 +131,45 @@ if a[midIndex] > key {
 }
 ```
 
-In this case, `a[midIndex] = 29`. That's less than the search key, so we can safely conclude that the search key will never be in the left half of the array. After all, the left half only contains numbers smaller than `29`. Hence, the search key must be in the right half somewhere (or not in the array at all).
+이 경우, `a[midIndex] = 29` 입니다. `29`는 찾고자하는 search key보다 작기 때문에 우리는 왼쪽 배열에 우리가 찾고자 하는 값이 없다고 결론지을 수 있습니다.  그렇다면, 왼쪽 배열은 `29`보다 작은 값만 포함하고 있습니다. 따라서, search key는 무조건 오른쪽 배열에 있을 것입니다(그렇지 않다면 배열에 존재하지 않는 것입니다).
 
-Now we can simply repeat the binary search, but on the array interval from `midIndex + 1` to `range.upperBound`:
+그럼 다시 이진 탐색을 반복합니다. 하지만 수행하는 배열의 간격은 `midIndex + 1`부터 `range.upperBound`로 합니다:
 
 	[ x, x, x, x, x, x, x, x, x, x | 31, 37, 41, 43, 47, 53, 59, 61, 67 ]
 
-Since we no longer need to concern ourselves with the left half of the array, I've marked that with `x`'s. From now on we'll only look at the right half, which starts at array index 10.
+왼쪽 배열의 값을 모두 `x`로 표시했기 떄문에 우리는 왼쪽 배열에 대해서 더이상 걱정하지 않아도 됩니다. 이제부터 우리는 index 10으로 시작하는 오른쪽 배열만 신경쓰면 됩니다.
 
-We calculate the index of the new middle element: `midIndex = 10 + (19 - 10)/2 = 14`, and split the array down the middle again.
+다시 `midIndex = 10 + (19 - 10)/2 = 14`으로 중간 index를 다시 계산하였으며, 다시 중간을 기점으로 배열을 반으로 나눕니다.
 
 	[ x, x, x, x, x, x, x, x, x, x | 31, 37, 41, 43, 47, 53, 59, 61, 67 ]
 	                                                 *
 
-As you can see, `a[14]` is indeed the middle element of the array's right half.
+보시다시피 오른쪽 배열의 중간 값은 `a[14]`입니다.
 
-Is the search key greater or smaller than `a[14]`? It's smaller because `43 < 47`. This time we're taking the left half and ignore the larger numbers on the right:
+search key가 `a[14]`보다 작은가요 아니면 큰가요? `43 < 47`이기 때문에 더 작습니다. 이제 왼쪽 배열을 보고 오른쪽 배열은 무시하도록 합시다:
 
 	[ x, x, x, x, x, x, x, x, x, x | 31, 37, 41, 43 | x, x, x, x, x ]
 
-The new `midIndex` is here:
+새로운 `midIndex`입니다:
 
 	[ x, x, x, x, x, x, x, x, x, x | 31, 37, 41, 43 | x, x, x, x, x ]
 	                                     *
 
-The search key is greater than `37`, so continue with the right side:
+search key가 `37` 보다 크기 떄문에 오른쪽 부분에서 계속합니다:
 
 	[ x, x, x, x, x, x, x, x, x, x | x, x | 41, 43 | x, x, x, x, x ]
 	                                        *
 
-Again, the search key is greater, so split once more and take the right side:
+다시 search key가 더 크므로, 한번 더 분할하여 오른쪽 값을 얻습니다.:
 
 	[ x, x, x, x, x, x, x, x, x, x | x, x | x | 43 | x, x, x, x, x ]
 	                                            *
 
-And now we're done. The search key equals the array element we're looking at, so we've finally found what we were searching for: number `43` is at array index `13`. w00t!
+다 되었습니다. 찾고자 하는 search key가 배열의 요소와 일치합니다. 따라서 마침내 원하는 값을 찾았습니다: 숫자 `43` 은 index `13`입니다. 예~!
 
-It may have seemed like a lot of work, but in reality it only took four steps to find the search key in the array, which sounds about right because `log_2(19) = 4.23`. With a linear search, it would have taken 14 steps.
+이러한 과정이 많은 작업으로 보일 수 있지만, 실제로 search key를 찾기 위해 고작 4단계만 거친 것입니다. 이진 탐색에서는 `log_2(19) = 4.23` 이지만, 만약 선형 탐색이었다면 14단계였을 것입니다. 
 
-What would happen if we were to search for `42` instead of `43`? In that case, we can't split up the array any further. The `range.upperBound` becomes smaller than `range.lowerBound`. That tells the algorithm the search key is not in the array and it returns `nil`.
+만약 `43`대신에 `42`를 찾았다면 어땠을까요? 이 경우에 더이상 배열을 분할하지 못했을 것입니다. `range.upperBound`가 `range.lowerBound`보다 작아지기 때문에 해당 알고리즘으로 값을 찾지 못하고 배열은 `nil`을 반환할 것입니다. 
 
 > **Note:** Many implementations of binary search calculate `midIndex = (lowerBound + upperBound) / 2`. This contains a subtle bug that only appears with very large arrays, because `lowerBound + upperBound` may overflow the maximum number an integer can hold. This situation is unlikely to happen on a 64-bit CPU, but it definitely can on 32-bit machines.
 
