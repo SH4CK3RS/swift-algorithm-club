@@ -53,3 +53,6 @@ unit test의 경우:
     - Check **Shared**
 
 ![Screenshot of scheme settings](../Images/scheme-settings-for-travis.png)
+
+
+*Translated by Byeonggeun Son*
