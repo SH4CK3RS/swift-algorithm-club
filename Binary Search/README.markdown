@@ -211,7 +211,7 @@ binarySearch(numbers, key: 43)  // gives 13
 
 배열이 먼저 정렬되야하는게 문제인가요? 확실히 그렇긴 합니다. 정렬에 걸리는 시간을 염두해두세요 -- 이진 탐색과 정렬을 조합하는것은 선형 탐색보다 느리고 비효율적일수 있습니다. 이진 탐색은 정렬을 한번 수행하고 여러번 탐색을 수행할 떄 매우 유용합니다.
 
-[위키피디아](https://en.wikipedia.org/wiki/Binary_search_algorithm)도 .
+[위키피디아](https://en.wikipedia.org/wiki/Binary_search_algorithm)도 읽어보세요.
 
 *Written for Swift Algorithm Club by Matthijs Hollemans*
 
