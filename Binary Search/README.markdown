@@ -1,4 +1,4 @@
-# 이진 
+# 이진 탐색
 
 목표: 배열로부터 요소를 빠르게 찾기.
 
@@ -171,13 +171,13 @@ search key가 `37` 보다 크기 떄문에 오른쪽 부분에서 계속합니�
 
 만약 `43`대신에 `42`를 찾았다면 어땠을까요? 이 경우에 더이상 배열을 분할하지 못했을 것입니다. `range.upperBound`가 `range.lowerBound`보다 작아지기 때문에 해당 알고리즘으로 값을 찾지 못하고 배열은 `nil`을 반환할 것입니다. 
 
-> **Note:** Many implementations of binary search calculate `midIndex = (lowerBound + upperBound) / 2`. This contains a subtle bug that only appears with very large arrays, because `lowerBound + upperBound` may overflow the maximum number an integer can hold. This situation is unlikely to happen on a 64-bit CPU, but it definitely can on 32-bit machines.
+> **주목:** 이진 탐색을 사용할때 `midIndex = (lowerBound + upperBound) / 2`를 많이 사용합니다. 이러한 방법은 매우 큰 배열을 다룰 때 약간의 버그가 있습니다. 왜냐하면 `lowerBound + upperBound`는 integer가 수용할 수 있는 최대 숫자 범위를 넘을 수 있기 떄문입니다. 64-bit CPU에서는 문제가 없더라도 32- bit CPU에서는 문제가 있을 수 있습니다.
 
-## Iterative vs recursive
+## 반복 vs 재귀
 
-Binary search is recursive in nature because you apply the same logic over and over again to smaller and smaller subarrays. However, that does not mean you must implement `binarySearch()` as a recursive function. It's often more efficient to convert a recursive algorithm into an iterative version, using a simple loop instead of lots of recursive function calls.
+이진 탐색은 배열을 더 작게 하기 위해 동일한 로직을 계속 수행하므로 재귀라고 할 수 있습니다. 히지만 그렇다고해서 `binarySearch()`를 재귀함수로 사용해야한다는 것은 아니다. 계속해서 재귀함수를 호출하는것보다 단순한 반복문을 사용하는 것이 더 효과적일 때도 있습니다.
 
-Here is an iterative implementation of binary search in Swift:
+다음은 Swift에서 반복문을 통해 이진 탐색을 사용한것입니다:
 
 ```swift
 func binarySearch<T: Comparable>(_ a: [T], key: T) -> Int? {
@@ -197,9 +197,9 @@ func binarySearch<T: Comparable>(_ a: [T], key: T) -> Int? {
 }
 ```
 
-As you can see, the code is very similar to the recursive version. The main difference is in the use of the `while` loop.
+보시다시피 재귀를 사용할떄와 코드가 비슷합니다. 큰 차이점은 `while` 반복문을 어떻게 사용했느냐 입니다.
 
-Use it like this:
+이렇게 사용해보세요:
 
 ```swift
 let numbers = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67]
@@ -207,10 +207,12 @@ let numbers = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 6
 binarySearch(numbers, key: 43)  // gives 13
 ```
 
-## The end
+## 결론
 
-Is it a problem that the array must be sorted first? It depends. Keep in mind that sorting takes time -- the combination of binary search plus sorting may be slower than doing a simple linear search. Binary search shines in situations where you sort just once and then do many searches.
+배열이 먼저 정렬되야하는게 문제인가요? 확실히 그렇긴 합니다. 정렬에 걸리는 시간을 염두해두세요 -- 이진 탐색과 정렬을 조합하는것은 선형 탐색보다 느리고 비효율적일수 있습니다. 이진 탐색은 정렬을 한번 수행하고 여러번 탐색을 수행할 떄 매우 유용합니다.
 
-See also [Wikipedia](https://en.wikipedia.org/wiki/Binary_search_algorithm).
+[위키피디아](https://en.wikipedia.org/wiki/Binary_search_algorithm)도 .
 
 *Written for Swift Algorithm Club by Matthijs Hollemans*
+
+*Translated By Byeonggeun Son*
