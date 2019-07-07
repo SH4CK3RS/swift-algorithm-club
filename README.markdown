@@ -22,7 +22,7 @@
 
 [알고리즘 설계 기술](Algorithm%20Design.markdown). 이 글에서는 어떻게 자신만의 알고리즘을 만들 수 있는지에 대해 이야기하고있습니다.
 
-[기여하는 법](https://github.com/raywenderlich/swift-algorithm-club/blob/master/.github/CONTRIBUTING.md). 문제 제기 또는 피드백을 보내주세요
+[기여하는 법](https://github.com/SH4CK3RS/swift-algorithm-club/blob/master/.github/CONTRIBUTING.md). 문제 제기 또는 피드백을 보내주세요
 
 ## 어디서부터 시작하지?
 만약 알고리즘과 자료구조가 처음이라면, 아래의 좋은 예제들로 시작하는게 좋습니다:
