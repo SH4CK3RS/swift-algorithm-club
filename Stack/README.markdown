@@ -71,4 +71,6 @@ Push가 배열의 시작지점이 아닌 마지막에 새로운 값을 추가한
 스텍의 재밌는 사실: 함수 또는 메소드를 호출할 떄마다, CPU는 반환 주소를 스텍에 위치시킵니다. 함수가 끝나면 CPU는 반환 주소를 이용해 호출 지점으로 돌아갑니다.
 만약 많은 함수를 호출하게 되면 — 예를들어 끝나지 않는 재귀함수를 호출하게 되면 CPU의 스텍 공간이 넘치게 되어 흔히 말하는 스텍 오버플로우가 발생하게됩니다.
 
-*이 글은 Swift Algorithm Club을 위해 Matthijs Hollemans에 의해 작성되었습니다.*
+*Written for Swift Algorithm Club by Matthijs Hollemans*
+
+*Translated By Byeonggeun Son*
