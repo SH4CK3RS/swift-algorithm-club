@@ -230,4 +230,6 @@ insertionSort(objects) { $0.priority < $1.priority }
 
 [Wikipedia에 설명되어 있는 Insertion sort](https://ko.wikipedia.org/wiki/%EC%82%BD%EC%9E%85_%EC%A0%95%EB%A0%AC)
 
-*이 글은 Swift Algorithm Club을 위해 Matthijs Hollemans에 의해 작성되었습니다.*
+*Written for Swift Algorithm Club by Matthijs Hollemans*
+
+*Translated By Byeonggeun Son*
